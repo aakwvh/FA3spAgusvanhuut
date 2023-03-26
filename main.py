@@ -44,6 +44,7 @@ def geef_vergelijkbare_product(criteria):
     """"
     in deze functie wordt er in de database gezocht naar de product id die dezelfde category en
     sub category hebben als aangegeven product id.
+    het return een lijst met producten die het meest op lijken:
 
     """
     cur.execute(f"""SELECT product_id,brand, name,category,sub_category
@@ -56,6 +57,39 @@ def geef_vergelijkbare_product(criteria):
 
     for item in rows:
         meest_vergelijkbare_product.append(item[0])
-    return(meest_vergelijkbare_product)
+
+    return "(" + ",".join(["'{}'".format(x) for x in meest_vergelijkbare_product]) + ")"
 
 
+def sorteer_viewed_bought(meest_vergelijkbare_product):
+    """
+    Deze functie haalt op de producten  die in de lijst meest_vergelijkbare_product zit en wordt gesorteerd op het aantal keer dat product is gekeken/viewed en gekeocht/bought
+
+    :param meest_vergelijkbare_product: Een lijst van product_id's
+    :return: Een lijst van namen van de producten en het totale order in dit geval is order is hoevaak een product_id is geviewed of gebought
+    """
+
+    cur.execute(f""" SELECT product.name, SUM(session_product.order_id)
+    FROM session_product
+    JOIN product ON product.product_id = session_product.product_id
+    WHERE product.product_id IN {meest_vergelijkbare_product}
+    GROUP BY product.product_id
+    ORDER BY SUM(session_product.order_id) DESC;
+    """ )
+
+    rows = cur.fetchall()
+    gesorteerd = list()
+
+    for item in rows:
+        gesorteerd.append(item[0])
+        gesorteerd.append(item[1])
+    return(gesorteerd)
+
+def algoritme(n):
+    idt = geef_brand_category(n)
+    ik = geef_vergelijkbare_product(idt)
+    print(ik)
+    tk = sorteer_viewed_bought(ik)
+    return tk
+
+print('producten die het meest op lijken:', algoritme("23978"))
