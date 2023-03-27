@@ -24,6 +24,9 @@ cur = con.cursor()
 
 def geef_soort_gelijke_profiel(profiel_id):
     """
+    hier in wordt er gezpcht naar profiel die het meest overeenkomen met de bezoekers profiel
+    dus er wordt eerst een innerjoin gemaakt en
+    dan wordt er gekeken welke profiel heeft de meeste product_id gekocht als de bezoekers profiel
 
     """
     cur.execute(f"""
@@ -62,6 +65,7 @@ print("profiel die het meest overeenkomt is:",geef_soort_gelijke_profiel("5a393d
 
 def geef_productid(soort_gelijk):
     """
+    hier in wordt eer uit de database alle product_id die is gekocht of geviewed door profiel soort_gelijk
     """
     cur.execute(f"""
     select distinct product_id from profile_product
@@ -82,7 +86,6 @@ def collaborative(profile_id):
 
 
 start = time.time()
-# getProducts(getTag('5ad9bc5529767d0001458c2b'))
 print("product_id die door soort gelijke profiel wordt bekeken is:",collaborative('5a393d68ed295900010384ca'))
 
 end = time.time()

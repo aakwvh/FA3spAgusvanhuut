@@ -12,12 +12,11 @@ cur = con.cursor()
 
 """"
 ik wil als eerse regel voor content filtering, een lijst genereren met product dat dezelfde category en sub_category . 
-regels: 
-je krijgt een product_id van de gebruiker,
-van die product_id kijk je naar de category en sub_category  
+je krijgt een product_id van de gebruiker, van die product_id kijk je naar de category en sub_category  
 dan selecteer je een product id die dezelfde category en sub_category hebben en zet je dan in een nieuwe tabel die dan gebruik als recommendation 
-1. maak een nieuwe tabel genaamd content filtering 
-2. 
+1. als een gebruiker bepaalde profiel_id bekijk geeft dan wat voor category en sub_category het behoort 
+2. selecteer een product id die dezelfde category en sub_category hebben en zet je dan in een nieuwe tabel dan gebruik als recommendation 
+3. sorteer het tabel op het aantal keer dat product is gekeken of gekocht 
 """
 
 def geef_brand_category(p_id):
@@ -92,5 +91,13 @@ def algoritme(n):
     tk = sorteer_viewed_bought(ik)
     return tk
 
+
+
+start = time.time()
 print('producten die het meest op lijken:', algoritme("23978"))
 
+end = time.time()
+print(f"time to complete = {end - start}")
+
+con.commit()
+con.close()
