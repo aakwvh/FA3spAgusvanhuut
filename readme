@@ -25,10 +25,11 @@ Deze regel filtert de producten op basis van de categorien en sub_categorien. al
 dan krijg je een lijst met wat voor categorieen en subcategorieen dat product_id bevat  bijvoorbeeld de categorie "gezondheid"  en daarbij subcategorie "lichaamsverzorging".
 Dan wordt er een lijst met producten gegenereerd die gerelateerd zijn aan deze categorie en subcategorie. 
 Deze tabel kan worden gebruikt om gerelateerde producten te tonen.
+dit regel heeft een time to complete van ongeveer 0.69 min 
 
 ** collaborative filtering regel
 deze regel kijkt eerst naar welke profielen lijken het meest op de bezoekers profiel en daaruit wordt een lijst van product_id gegeven die dat profiel heeft gekeken of gekocht 
-
+dit regel heeft een time to complete van ongeveer 2.639
 
 ## Studenten
 * Agus van Huut | 1820506 | [aakwvh](https://github.com/aakwvh)
