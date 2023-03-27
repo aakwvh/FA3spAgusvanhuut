@@ -1,1 +1,34 @@
+## Inhoudsopgave 
+* [Algemene informatie](#algemene-informatie)
+* [Technologieën](#technologieën)
+* [Set van regels ](#set van regels)
+* [Studenten](#studenten)
 
+
+## Algemene informatie
+
+**Business rules voor Recommendation Engine FA 3**
+
+Dit is een deelopdracht 3 van Structured Programming.
+
+  
+## Technologieën
+Project is gemaakt met:
+* Python 3.10.2
+* psycopg2   
+* postgres sql 
+  
+## Set van regels 
+
+** content filtering regels 
+Deze regel filtert de producten op basis van de categorien en sub_categorien. als een visitor bijvoorbeed een product_id bekijk 
+dan krijg je een lijst met wat voor categorieen en subcategorieen dat product_id bevat  bijvoorbeeld de categorie "gezondheid"  en daarbij subcategorie "lichaamsverzorging".
+Dan wordt er een lijst met producten gegenereerd die gerelateerd zijn aan deze categorie en subcategorie. 
+Deze tabel kan worden gebruikt om gerelateerde producten te tonen.
+
+** collaborative filtering regel
+deze regel kijkt eerst naar welke profielen lijken het meest op de bezoekers profiel en daaruit wordt een lijst van product_id gegeven die dat profiel heeft gekeken of gekocht 
+
+
+## Studenten
+* Agus van Huut | 1820506 | [aakwvh](https://github.com/aakwvh)
